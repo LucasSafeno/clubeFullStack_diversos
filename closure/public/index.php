@@ -1,22 +1,32 @@
 <?php
 
-// * Função anonima => Função sem nome
-$person = function () {
-    var_dump("Teste");
-};
 
-//  Chamr como uma função, usando ()
-//$person();
+// $numbers = [1, 2, 3, 4, 5, 6];
 
-class Person
+// $multipliedBy2 = array_map(function ($number) {
+//     var_dump($number * 2);
+// }, $numbers);
+
+// function multiply($number)
+// {
+//     var_dump($number * 2);
+// }
+
+// $multipliedBy2 = array_map('multiply', $numbers);
+
+
+function doubleNumber($callback, $number)
 {
-    public function __invoke()
-    {
-        var_dump("Teste1");
+    if (is_callable($callback)) {
+        $callback($number);
     }
+
 }
 
-$person1 = new Person;
-$person1();
+doubleNumber(function ($number) {
+    var_dump($number *= $number);
+
+}, 5);
+
 
 ?>
